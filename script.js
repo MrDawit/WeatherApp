@@ -15,6 +15,17 @@ $(document).ready(function(){
           document.getElementById("searchSidenav").style.width = "0";
           document.getElementById("main").style.marginLeft = "0";
         }
+        
+          $.ajax({
+              url:"https://api.openweathermap.org/data/2.5/weather?q=hartford,connecticut&appid=715ee435d9e6cc809bc1cb6b62581405",
+              method: "GET"
+            }).then(function(response) {
+          $("#cityName").append(response.name+"<br>");
+
+          $(".card-body").append("Humidity: "+response.main.humidity+"<br>");
+          $(".card-body").append("Weather Condition: "+response.weather.main+", "+response.weather.description+"<br>");
+          $(".card-body").append("Windspead & Direction: "+response.wind.speed+" at "+response.wind.deg+" degrees?"+"<br>")
+            });
     
         $("button").click(function () {
           openNav();
@@ -33,16 +44,19 @@ $(document).ready(function(){
         $("form").submit(function (event) {
           event.preventDefault();
           //closeNav()
-          var city = $("input").val().trim();
+           city = $("input").val().trim();
     
          
-          var queryURL="http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=715ee435d9e6cc809bc1cb6b62581405";
+          var queryURL="https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=715ee435d9e6cc809bc1cb6b62581405";
           $.ajax({
               url: queryURL,
               method: "GET"
             }).then(function(response) {
-          $("#cityName").append(response.name);
-          $(".card-body").append("Humidity: "+response.main.humidity);
+          $("#cityName").append(response.name+"<br>");
+
+          $(".card-body").append("Humidity: "+response.main.humidity+"<br>");
+          $(".card-body").append("Weather Condition: "+response.weather.main+", "+response.weather.description+"<br>");
+          $(".card-body").append("Windspead & Direction: "+response.wind.speed+" at "+response.wind.deg+" degrees?"+"<br>")
             });
     
           //var prevCities=[];

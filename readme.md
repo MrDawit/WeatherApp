@@ -36,4 +36,4 @@ SO THAT I can plan a trip accordingly
 Shalom Dawit\
 LinkedIn:https://www.linkedin.com/in/shalom-dawit-a0a5a4126 \
 GitHub:https://github.com/MrDawit \
-Email:Shalom.Dawit@gmail.com \
+Email:Shalom.Dawit@gmail.com 

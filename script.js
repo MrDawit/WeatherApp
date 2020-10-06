@@ -1,13 +1,7 @@
 $(document).ready(function(){
 
     var city=null;
-    var queryURL="http://api.openweathermap.org/data/2.5/weather?q=hartford,connecticut&appid=715ee435d9e6cc809bc1cb6b62581405"
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-    $("#cityName").append(response.name);
-      });
+   
     
     
         /* sidenav opener */
@@ -39,10 +33,17 @@ $(document).ready(function(){
         $("form").submit(function (event) {
           event.preventDefault();
           //closeNav()
-          var city = $("input").val();
+          var city = $("input").val().trim();
     
          
-    
+          var queryURL="http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=715ee435d9e6cc809bc1cb6b62581405";
+          $.ajax({
+              url: queryURL,
+              method: "GET"
+            }).then(function(response) {
+          $("#cityName").append(response.name);
+          $(".card-body").append("Humidity: "+response.main.humidity);
+            });
     
           //var prevCities=[];
           //if(localStorage!==null || undefined){
@@ -52,6 +53,8 @@ $(document).ready(function(){
           localStorage.setItem(localStorage.length + 1, city);
     
           $("#history").append(localStorage[localStorage.length] + "<br>");
+
+          $("input").val("");
           //}
           //var i={a:{"city":city}}
           //var city = document.getElementsByTagName("input")[0].value

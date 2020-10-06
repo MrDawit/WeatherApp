@@ -1,151 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <title>WeatherApp</title>
-</head>
-<body>
-    <header>
-<p>WeatherApp</p>
-   
-    </header>
-    
-    <div id="searchSidenav" class="sidenav">
-        <a href="#" class="closebtn">&times;</a>
-        <form>
-        <label>City Search:</label>
-        <input type="text" placeholder="Search for City Forecast"></input>
-      </form>
-        <!--searched cities should be placed here (from localStorage) -->
-        <div id="history"></div>
-      </div>
-      
-      <!-- sidenav button -->
-      <button>Search</button>
-      
-      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-      <div id="main">
-<div></div>
 
-      <div id="currentForecast">
-        <!-- current forecast -->
-      </div>
-      <div id="fiveDayForecast">
-          <!-- 5 day forecast -->
-          <tbody></tbody>
-      </div>
-    </div> 
-    
-   
-    
-    <aside id="aside">
-<tbody></tbody>
-    </aside>
-    
-    
-<!-- signiture footer -->
-<footer>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <title>WeatherApp</title>
+</head>
+
+<body>
+  <header>
+    <p>WeatherApp</p>
+
+  </header>
+
+  <div id="searchSidenav" class="sidenav">
+    <a href="#" class="closebtn">&times;</a>
+    <form>
+      <label>City Search:</label>
+      <input type="text" placeholder="Search for City Forecast"></input>
+    </form>
+    <!--searched cities should be placed here (from localStorage) -->
+    <div id="history"></div>
+  </div>
+
+  <!-- sidenav button -->
+  <button>Search</button>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div id="main">
+    <div></div>
+    <div class="wrapper">
+      <header>
+        <h1>Current Forecast</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <!-- city name -->
+          <h2 id=cityName></h2>
+        </div>
+        <div class="card-body">
+          
+        </div>
+        <div class="card-footer">
+    <div id="currentForecast">
+      <!-- current forecast -->
+    </div>
+    <div id="fiveDayForecast">
+      <!-- 5 day forecast -->
+      <tbody></tbody>
+    </div>
+  </div>
+
+
+
+  <aside id="aside">
+    <tbody></tbody>
+  </aside>
+
+
+  <!-- signiture footer -->
+  <footer>
     <div id=text>created by SD_WORKS</div>
     <div id=image>
-        &copy;<img src="./favicon.ico" alt="juju image">9/20
+      &copy;<img src="./favicon.ico" alt="juju image">9/20
     </div>
-</footer>
-    
-    <!-- <script src="./script.js"></script> -->
-    <script>
-        /* sidenav opener */
-function openNav() {
-  document.getElementById("searchSidenav").style.width = "400px";
-  document.getElementById("main").style.marginLeft = "400px";
-}
+  </footer>
 
-/* sidenav closer */
-function closeNav() {
-  document.getElementById("searchSidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-} 
-
-$("button").click(function(){
-  openNav()
-});
-
-
-$(".closebtn").click(function(){
-  closeNav() 
-});
-
-$("form").submit(function(){
-  //event.preventDefault();
-  //closeNav()
-  var city=$("input").val();
-
-  //why doesnt any of this work?
-  console.log("favorite food");
-  var add=0;
-  add=1+2;
-  console.log(add);
-
-
-  //var prevCities=[];
- //if(localStorage!==null || undefined){
-  //localStorage.setItem("preCities",city);
-  //var cities=JSON.stringify(localStorage.getItem("preCities"));
-  //prevCities.push=cities;
-  localStorage.setItem(localStorage.length+1, city);
-  
-  
- //}
-  //var i={a:{"city":city}}
- //var city = document.getElementsByTagName("input")[0].value
-
-  
-
-});
-
-for(i=1;i<=localStorage.length;i++){
-$("#history").append(localStorage[i]+"<br>");
-};
-
-
-//localStorage for objects refresher example:
-//start
-// var food={meal:"steak"};
-// var food_serialized=JSON.stringify(food);
-// //console.log(food_serialized);
-// localStorage.setItem("foodie",food_serialized);
-// //console.log(localStorage);
-// var pToTheArsed=JSON.parse(localStorage.getItem("foodie"));
-// console.log(pToTheArsed); 
-//end
-
-
-//$("#currentForecast").append("<div></div>");
-//const DIV=$("div").attr("id","city");
-
-
-
-
+  <script src="./script.js"></script>
  
-
-// var queryURL="http://api.openweathermap.org/data/2.5/weather?q=hartford,connecticut&appid=715ee435d9e6cc809bc1cb6b62581405"
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//   }).then(function(response) {
-//   //  const CITY=$("#city").html(response.name);
-   
-//     //var currentForecVar=$("#currentForecast");
-//     const DIV=$("<div>");
-// var inDiv =$("<div>").text("City : "+ response.name);
-//   DIV.append(inDiv);
-// $("#currentForecast").append(DIV);
-// console.log(response.name);
-//   });
-    </script>
 </body>
+
 </html>

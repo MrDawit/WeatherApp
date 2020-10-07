@@ -14,6 +14,7 @@ button{
     background-color: purple;
     color: gold;
     border-radius:25%;
+    margin:10px 0px;
 }
 button:hover {
     box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -64,10 +65,25 @@ button:hover {
   #main {
     transition: margin-left .5s;
     padding: 20px;
+   background-color: black;
+    /* background-image: url("./assets/images/purple_paradise.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
   }
-  
+  #searchBTN{
+    /* background-color:black; */
+    background-image:url("./assets/images/clouds.jpg");
+    background-position:center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-
+  .wrapper{
+    /* opacity: 0.9; */
+  }
+span{
+  font-weight:bold;
+}
 
 
 

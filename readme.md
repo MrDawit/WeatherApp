@@ -7,11 +7,11 @@ live link: https://MrDawit.github.io/WeatherApp
 After searching for a city, this WeatherApp uses a weather api to make important weather information available for the user. Weather information that includes weather conditions, the temperature, the humidity, the wind speed and the UV index.
 
 ## UserStory
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
+
+AS A traveler\
+I WANT to see the weather outlook for multiple cities\
 SO THAT I can plan a trip accordingly
-```
+
 ## Technologies Used:
 * Javascript
 * Jquery library

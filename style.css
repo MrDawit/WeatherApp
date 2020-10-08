@@ -159,7 +159,10 @@ span{
   color:gold; 
 }
 
-
+.uvIndex{
+  font-weight: bold;
+/* color:red; */
+}
 footer{
     /* removed position:fixed; bottom:0; -added position:relative; width and margin-left to previous signature footer*/
      position:relative;

@@ -86,7 +86,7 @@ span{
 }
 
 
-/* .glow-on-hover {
+.glow-on-hover {
   width: 220px;
   height: 50px;
   border: none;
@@ -101,7 +101,7 @@ span{
 
 .glow-on-hover:before {
   content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #002bff, #7a00ff, #ff00c8, #ff0000);
+  background: linear-gradient(45deg,black,indigo, #002bff, #7a00ff, #ff00c8);
   position: absolute;
   top: -2px;
   left:-2px;
@@ -146,17 +146,17 @@ span{
   100% { background-position: 0 0; }
 }
 
- */
 
+/* properties could be combined to glow-on-hover */
 .historyBTN{
-  color:black;
+  color:rgb(6, 64, 112);
   background-color: grey;
-  font-size:.75em;
+  font-size:.8em;
   border-radius:10rem;
 }
 .historyBTN:hover{
   background-color: indigo;
-  color:gold;
+  color:gold; 
 }
 
 

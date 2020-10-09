@@ -26,7 +26,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?q=hartford,connecticut&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
+      url: "https://api.openweathermap.org/data/2.5/weather?q=" + localStorage[localStorage.length] + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
       method: "GET"
     }).then(function (response) {
       $("#cityName h2").append(response.name + "<br>");
@@ -70,7 +70,7 @@ $(document).ready(function () {
   // (predetermined city)5 day forecast
   function predetermined5DayCall() {
     $.ajax({
-      url: "http://api.openweathermap.org/data/2.5/forecast?q=hartford,connecticut&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
+      url: "https://api.openweathermap.org/data/2.5/forecast?q=" + localStorage[localStorage.length] + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
       method: "GET"
     }).then(function (response) {
       for (var instance = 0; instance < 5; instance++) {

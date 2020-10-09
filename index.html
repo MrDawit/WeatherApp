@@ -11,10 +11,7 @@
 </head>
 
 <body>
-  <header>
-    <p>WeatherApp</p>
-
-  </header>
+  
 
   <div id="searchSidenav" class="sidenav">
     <a href="#" class="closebtn">&times;</a>
@@ -22,60 +19,116 @@
       <label>City Search:</label>
       <input type="text" placeholder="Search for City Forecast"></input>
     </form>
+    <div id="searchedCities">
     <!--searched cities should be placed here (from localStorage) -->
-    
+</div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12" id="searchBTN">
-        
+      <div class="col-12" id="search">
+        <header id="appTitle">
+          <p>WeatherApp</p>
+        </header>
         <!-- sidenav button -->
-        <button>Search</button>
-        
+        <button id="searchBTN">Search</button>
+
       </div>
     </div>
   </div>
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
   <div id="main">
     <div></div>
-    <div class="wrapper">
-      <header>
-        <h1>Current Forecast</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <!-- city name -->
-          <h2 id=cityName></h2>
-        </div>
-        <div class="card-body">
+    <!-- <div class="wrapper"> -->
+    <header id="cForeTitle">
+      <h1>Current Forecast</h1>
+    </header>
+    <br>
 
-        </div>
-        <div class="card-footer">
-          <div id="currentForecast">
-            <!-- current forecast -->
+
+    <div id="currentForecast">
+      <!-- current forecast -->
+      <div class="container">
+        <header id=cityName>
+          <!-- using cityName as text for <h2> instead of the obvious "current forecast heading" -->
+          <h2></h2>
+        </header>
+        <br>
+        <div class="card-deck">
+          <div class="card" id="currentDay">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
           </div>
-          <div id="fiveDayForecast">
-            <!-- 5 day forecast -->
-            <tbody></tbody>
+          <div class="card" id="weatherPic">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
           </div>
         </div>
-
-
-
-        <aside id="aside">
-          <tbody></tbody>
-        </aside>
-
-
-        <!-- signiture footer -->
-        <footer>
-          <div id=text>created by SD_WORKS</div>
-          <div id=image>
-            &copy;<img src="./favicon.ico" alt="juju image">9/20
+      </div>
+    </div>
+    <br><br>
+    <div id="fiveDayForecast">
+      <!-- 5 day forecast -->
+      <div class="container">
+        <header id="fiveDayTitle">
+          <h2>5 Day Forecast</h2>
+        </header>
+          <br><br>
+        <div class="card-deck">
+          <div class="card" id="day0">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
           </div>
-        </footer>
+          <div class="card" id="day1">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card" id="day2">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <div class="card-deck">
+          <div class="card" id="day3">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card" id="day4">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card" id="day5">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div id=twiceBeforeFooter>
+        <p>Note: UV Index is based on noon rating since that is the time of <strong>highest</strong> rating.</p>
+          <p>Color Code: Index_less than 3%-<strong>low</strong>=<span id="green">Green</span>, Index_between 3% and 6%-<strong>moderate</strong>=<span id="yellow">Yellow</span>, Index_less than 6%-<strong>high</strong>=<span id="red">Red</span></p>
+      </div>
+        </div>
+    </div>
+  </div>
+  <div id="beforeFooter"></div>
+  <!-- signiture footer -->
+  <footer>
+    <div id="footer">
+      <div id=text>created by SD_WORKS</div>
+      <div id=image>
+        &copy;<img src="./favicon.ico" alt="juju image">9/20
+      </div>
+    </div>
+  </footer>
 
-        <script src="./script.js"></script>
+  <script src="./script.js"></script>
 
 </body>
 

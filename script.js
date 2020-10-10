@@ -25,11 +25,11 @@ $(document).ready(function () {
 
 
   // (predetermined city) current weather response with uv index response nested inside
-  function predeterminedCurrentCall() {
+  function predeterminedCurrentCall(location) {
 
 
     $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?q=" + localStorage[localStorage.length] + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
+      url: "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
       method: "GET"
     }).then(function (response) {
       $("#cityName h2").append(response.name + "<br>");
@@ -58,7 +58,7 @@ $(document).ready(function () {
           $(".uvIndex").css("background-color", "yellow");
         }
         if (response.value >= 6) {
-          $(".uvIndex").style("background-color", "red");
+          $(".uvIndex").css("background-color", "red");
         }
         //when 'else' statement included, undefined is presented when it should not. maybe this has to do with 2nd 'if' statement
         // else{
@@ -74,9 +74,9 @@ $(document).ready(function () {
   };
 
   // (predetermined city)5 day forecast
-  function predetermined5DayCall() {
+  function predetermined5DayCall(location) {
     $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/forecast?q=" + localStorage[localStorage.length] + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
+      url: "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
       method: "GET"
     }).then(function (response) {
       for (i = 0; i < 5; i++) {
@@ -143,9 +143,15 @@ var i=0;
   }
 
 
-
-  predeterminedCurrentCall();
-  predetermined5DayCall();
+if (localStorage.length > 0){
+  predeterminedCurrentCall(localStorage[localStorage.length]);
+  predetermined5DayCall(localStorage[localStorage.length]);
+}
+//statement for users first time visiting site
+else{
+  predeterminedCurrentCall("hartford,connecticut");
+  predetermined5DayCall("hartford,connecticut");
+}
 
   //event listener to have a new api call using previously searched city
   $("body").on("click", ".historyBTN", function () {
@@ -182,7 +188,7 @@ var i=0;
       $("#day" + i + " .card-text").empty();
     };
 
-    
+
     newCity = $("input").val().trim();
     localStorage.setItem(localStorage.length + 1, newCity);
     $("#searchedCities").prepend("<button class='glow-on-hover historyBTN'>" + localStorage[localStorage.length] + "</button><br>");

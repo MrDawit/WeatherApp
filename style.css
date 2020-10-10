@@ -21,6 +21,30 @@ button:hover {
     box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     background-color: indigo;
   }
+
+  #clearHistory{
+    color:black;
+    float:right;
+    margin-right:5%;
+    
+    box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: rgb(68, 10, 109);
+    font-size:0.75em;
+  }
+  #clearHistory:hover{
+    box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: grey;
+  }
+
+/* #clearHistory{
+  position: absolute;
+font-size:12px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+} */
+
+
  /* The side navigation menu */
  .sidenav {
     height: 100%; /* 100% Full-height */
@@ -226,3 +250,4 @@ footer{
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   } 
+ 

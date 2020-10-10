@@ -125,8 +125,8 @@ $(document).ready(function () {
   // (searched city) 5day weather response
   function variableCity5DayCall(location) {
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405";
-var instance=-1;
-var i=0;
+    var instance = -1;
+    var i = 0;
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -143,22 +143,22 @@ var i=0;
   }
 
 
-if (localStorage.length > 0){
-  predeterminedCurrentCall(localStorage[localStorage.length]);
-  predetermined5DayCall(localStorage[localStorage.length]);
-}
-//statement for users first time visiting site
-else{
-  predeterminedCurrentCall("hartford,connecticut");
-  predetermined5DayCall("hartford,connecticut");
-}
+  if (localStorage.length > 0) {
+    predeterminedCurrentCall(localStorage[localStorage.length]);
+    predetermined5DayCall(localStorage[localStorage.length]);
+  }
+  //statement for users first time visiting site
+  else {
+    predeterminedCurrentCall("hartford,connecticut");
+    predetermined5DayCall("hartford,connecticut");
+  }
 
   //event listener to have a new api call using previously searched city
   $("body").on("click", ".historyBTN", function () {
     searchedCity = $(this).html();
     $("#cityName h2").empty();
     $("#currentForecast .card-text:first").empty();
-    for(i=0;i<5;i++){
+    for (i = 0; i < 5; i++) {
       $("#day" + i + " .card-text").empty();
     };
     variableCityCurrentCall(searchedCity);
@@ -184,7 +184,7 @@ else{
     event.preventDefault();
     $("#cityName h2").empty();
     $("#currentForecast .card-text:first").empty();
-    for(i=0;i<5;i++){
+    for (i = 0; i < 5; i++) {
       $("#day" + i + " .card-text").empty();
     };
 
@@ -226,7 +226,11 @@ else{
     //closes form submit event listener
   });
 
-
+  $("#clearHistory").on("click", function () {
+    localStorage.clear();
+    $("#searchedCities").empty();
+    //or location.reload();
+  })
 
 
   //event listener to close sidenav

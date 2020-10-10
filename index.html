@@ -12,9 +12,10 @@
 
 <body>
 
-
+  <!-- sidenav -->
   <div id="searchSidenav" class="sidenav">
     <a href="#" class="closebtn">&times;</a>
+    <button id=clearHistory>Clear</button>
     <form>
       <label>City Search:</label>
       <input type="text" placeholder="Search for City Forecast"></input>
@@ -113,12 +114,13 @@
         <div id=twiceBeforeFooter>
           <br>
           <p>
-            Note: -Api calls of 5day forecast instances not 100% accurate due to instance date/time being a variable that changes in accordance to time of pulled data.<br>
-             -UV Index is based on noon rating since that is the time of <strong>highest</strong> rating.<br>
-            Color Code:<br>
-            Index_less than 3%-<strong>low</strong>=<span id="green">Green</span><br>
-            Index_between 3% and 6%-<strong>moderate</strong>=<span id="yellow">Yellow</span><br>
-            Index_less than 6%-<strong>high</strong>=<span id="red">Red</span>
+            Note: -Api calls of 5day forecast instances not 100% accurate due to instance date/time being a variable
+            that changes in accordance to time of pulled data.<br>
+            -UV Index is based on noon rating since that is the time of <strong>highest</strong> rating.<br>
+            <span style="text-decoration: underline">Color Code</span>:<br>
+            <strong>Low</strong>-Index_less than 3%=<span id="green">Green</span><br>
+            <strong>Moderate</strong>-Index_between 3% and 6%=<span id="yellow">Yellow</span><br>
+            <strong>High</strong>-Index_less than 6%=<span id="red">Red</span>
           </p>
         </div>
       </div>

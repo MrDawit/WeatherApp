@@ -3,7 +3,9 @@ A weather app that gives the user their searched city's current and future forec
 
 live link: https://MrDawit.github.io/WeatherApp 
 
-<img src="#">
+<img src="./assets/images/WeatherApp.png">
+
+<img src="./WeatherApp.gif">
 
 ## Description
 After searching for a city, this WeatherApp uses a weather api to make important weather information available for the user. Weather information that includes weather conditions, the temperature, the humidity, the wind speed and the UV index.

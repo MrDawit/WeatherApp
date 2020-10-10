@@ -85,8 +85,11 @@ button:hover {
 #cityName{
   width:20%;
 }
+/* #cityName:h2 */
+
 #twiceBeforeFooter{
   color:greenyellow;
+  font-size: .6em;
 }
 #beforeFooter{
   background-color: indigo;
@@ -213,6 +216,7 @@ footer{
      border-color: rgb(23, 2, 37);
      padding:2px 2px 0px 2px;
  }
+ 
  
    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
    @media screen and (max-height: 450px) {

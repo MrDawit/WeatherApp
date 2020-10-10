@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  
+
 
   <div id="searchSidenav" class="sidenav">
     <a href="#" class="closebtn">&times;</a>
@@ -20,8 +20,8 @@
       <input type="text" placeholder="Search for City Forecast"></input>
     </form>
     <div id="searchedCities">
-    <!--searched cities should be placed here (from localStorage) -->
-</div>
+      <!--searched cities should be placed here (from localStorage) -->
+    </div>
   </div>
   <div class="container-fluid">
     <div class="row">
@@ -49,7 +49,7 @@
       <!-- current forecast -->
       <div class="container">
         <header id=cityName>
-          <!-- using cityName as text for <h2> instead of the obvious "current forecast heading" -->
+          <!-- using city name as text for <h2> instead of the obvious "current forecast heading" -->
           <h2></h2>
         </header>
         <br>
@@ -74,7 +74,7 @@
         <header id="fiveDayTitle">
           <h2>5 Day Forecast</h2>
         </header>
-          <br><br>
+        <br><br>
         <div class="card-deck">
           <div class="card" id="day0">
             <div class="card-body">
@@ -111,10 +111,17 @@
           </div>
         </div>
         <div id=twiceBeforeFooter>
-        <p>Note: UV Index is based on noon rating since that is the time of <strong>highest</strong> rating.</p>
-          <p>Color Code: Index_less than 3%-<strong>low</strong>=<span id="green">Green</span>, Index_between 3% and 6%-<strong>moderate</strong>=<span id="yellow">Yellow</span>, Index_less than 6%-<strong>high</strong>=<span id="red">Red</span></p>
-      </div>
+          <br>
+          <p>
+            Note: -Api calls of 5day forecast instances not 100% accurate due to instance date/time being a variable that changes in accordance to time of pulled data.<br>
+             -UV Index is based on noon rating since that is the time of <strong>highest</strong> rating.<br>
+            Color Code:<br>
+            Index_less than 3%-<strong>low</strong>=<span id="green">Green</span><br>
+            Index_between 3% and 6%-<strong>moderate</strong>=<span id="yellow">Yellow</span><br>
+            Index_less than 6%-<strong>high</strong>=<span id="red">Red</span>
+          </p>
         </div>
+      </div>
     </div>
   </div>
   <div id="beforeFooter"></div>

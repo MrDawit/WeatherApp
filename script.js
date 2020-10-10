@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
-  
+
+  //time(by list #) that call is made on the 5 day forecast api
+  var instance = -1;
+  var i = 0;
   var lat = null;
   var lon = null;
   var newCity = null;
@@ -36,7 +39,10 @@ $(document).ready(function () {
       $("#currentForecast .card-text:first").append("<span> Humidity: </span>" + response.main.humidity + "&#37;<br>");
       $("#currentForecast .card-text:first").append("<span> Weather Condition: </span>" + response.weather[0].main + ", " + response.weather[0].description + "<br>");
       $("#currentForecast .card-text:first").append("<span> Windspead & Direction: </span>" + response.wind.speed + " mph" + " at " + response.wind.deg + "&deg;<br>");
-
+      //statement for a "404" city
+      //     if (response.message="city not found"){
+      // console.log("works");
+      // }
       //using the current weather response to get lat and lon, inorder to get UV index response
       var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid=715ee435d9e6cc809bc1cb6b62581405";
 
@@ -73,55 +79,84 @@ $(document).ready(function () {
       url: "https://api.openweathermap.org/data/2.5/forecast?q=" + localStorage[localStorage.length] + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405",
       method: "GET"
     }).then(function (response) {
-      for (var instance = 0; instance < 5; instance++) {
-        $("#day" + instance + " .card-text").append("<span>Time:</span> " + response.list[instance].dt_txt + " <img src='https://openweathermap.org/img/wn/" + response.list[instance].weather[0].icon + "@2x.png'> <br>");
-        $("#day" + instance + " .card-text").append("<span>Temp:</span> " + response.list[instance].main.temp + "&#8457 <br>");
-        $("#day" + instance + " .card-text").append("<span>Humidity:</span> " + response.list[instance].main.humidity + "&#37; <br>");
-        $("#day" + instance + " .card-text").append("<span>Weather Condition:</span> " + response.list[instance].weather[0].main + " <br>");
+      for (i = 0; i < 5; i++) {
+        instance += i + 6;
+        $("#day" + i + " .card-text").append("<span>Time:</span> " + response.list[instance].dt_txt + " <img src='https://openweathermap.org/img/wn/" + response.list[instance].weather[0].icon + "@2x.png'> <br>");
+        $("#day" + i + " .card-text").append("<span>Temp:</span> " + response.list[instance].main.temp + "&#8457 <br>");
+        $("#day" + i + " .card-text").append("<span>Humidity:</span> " + response.list[instance].main.humidity + "&#37; <br>");
+        $("#day" + i + " .card-text").append("<span>Weather Condition:</span> " + response.list[instance].weather[0].main + " <br>");
       };
     });
   };
 
-// (searched city) current weather response with uv index response nested inside
-function variableCityCurrentCall(location) {
-  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405";
-
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function (response) {
-    $("#cityName h2").append(response.name + "<br>");
-    $("#currentForecast .card-text:first").append("<span> Time: </span>" + response.dt + " UTC (Unix time) <img src='https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png'><br>");
-    $("#currentForecast .card-text:first").append("<span> Temperature: </span>" + response.main.temp + "&#8457<br>");
-    $("#currentForecast .card-text:first").append("<span> Temp feels like: </span>" + response.main.feels_like + "&#8457<br>");
-    $("#currentForecast .card-text:first").append("<span> Humidity: </span>" + response.main.humidity + "&#37;<br>");
-    $("#currentForecast .card-text:first").append("<span> Weather Condition: </span>" + response.weather[0].main + ", " + response.weather[0].description + "<br>");
-    $("#currentForecast .card-text:first").append("<span> Windspead & Direction: </span>" + response.wind.speed + " mph" + " at " + response.wind.deg + "&deg;<br>");
-
-    //using the current weather response to get lat and lon, inorder to get UV index response
-    var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid=715ee435d9e6cc809bc1cb6b62581405";
+  // (searched city) current weather response with uv index response nested inside
+  function variableCityCurrentCall(location) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405";
 
     $.ajax({
-      url: queryURL2,
+      url: queryURL,
       method: "GET"
     }).then(function (response) {
-      $("#currentForecast .card-text:first").append("<span> UV Index: </span> <div class='uvIndex'>" + response.value + "</div> <br>");
+      $("#cityName h2").append(response.name + "<br>");
+      $("#currentForecast .card-text:first").append("<span> Time: </span>" + response.dt + " UTC (Unix time) <img src='https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png'><br>");
+      $("#currentForecast .card-text:first").append("<span> Temperature: </span>" + response.main.temp + "&#8457<br>");
+      $("#currentForecast .card-text:first").append("<span> Temp feels like: </span>" + response.main.feels_like + "&#8457<br>");
+      $("#currentForecast .card-text:first").append("<span> Humidity: </span>" + response.main.humidity + "&#37;<br>");
+      $("#currentForecast .card-text:first").append("<span> Weather Condition: </span>" + response.weather[0].main + ", " + response.weather[0].description + "<br>");
+      $("#currentForecast .card-text:first").append("<span> Windspead & Direction: </span>" + response.wind.speed + " mph" + " at " + response.wind.deg + "&deg;<br>");
+
+      //using the current weather response to get lat and lon, inorder to get UV index response
+      var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid=715ee435d9e6cc809bc1cb6b62581405";
+
+      $.ajax({
+        url: queryURL2,
+        method: "GET"
+      }).then(function (response) {
+        $("#currentForecast .card-text:first").append("<span> UV Index: </span> <div class='uvIndex'>" + response.value + "</div> <br>");
+      });
+      //closes parent ajax call
     });
-    //closes parent ajax call
-  });
-  //closes currentCityFunction()
-}
+    //closes variableCityCurrentCall()
+  }
+
+
+
+
+  // (searched city) 5day weather response
+  function variableCity5DayCall(location) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405";
+var instance=-1;
+var i=0;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+      for (i = 0; i < 5; i++) {
+        instance += i + 6;
+        $("#day" + i + " .card-text").append("<span>Time:</span> " + response.list[instance].dt_txt + " <img src='https://openweathermap.org/img/wn/" + response.list[instance].weather[0].icon + "@2x.png'> <br>");
+        $("#day" + i + " .card-text").append("<span>Temp:</span> " + response.list[instance].main.temp + "&#8457 <br>");
+        $("#day" + i + " .card-text").append("<span>Humidity:</span> " + response.list[instance].main.humidity + "&#37; <br>");
+        $("#day" + i + " .card-text").append("<span>Weather Condition:</span> " + response.list[instance].weather[0].main + " <br>");
+      };
+    });
+    //closes variableCity5DayCall()
+  }
+
 
 
   predeterminedCurrentCall();
   predetermined5DayCall();
-  
-   //event listener to have a new api call using previously searched city
-   $("body").on("click",".historyBTN", function () {
+
+  //event listener to have a new api call using previously searched city
+  $("body").on("click", ".historyBTN", function () {
     searchedCity = $(this).html();
     $("#cityName h2").empty();
     $("#currentForecast .card-text:first").empty();
-    variableCityCurrentCall(searchedCity);  
+    for(i=0;i<5;i++){
+      $("#day" + i + " .card-text").empty();
+    };
+    variableCityCurrentCall(searchedCity);
+    variableCity5DayCall(searchedCity);
   });
 
 
@@ -131,47 +166,68 @@ function variableCityCurrentCall(location) {
     openNav();
     //creating list of searched cities
     for (i = 1; i <= localStorage.length; i++) {
-       $("#searchedCities").prepend("<button class='glow-on-hover historyBTN'>" + localStorage[i] + "</button><br>");
-    }; 
+      $("#searchedCities").prepend("<button class='glow-on-hover historyBTN'>" + localStorage[i] + "</button><br>");
+    };
   });
 
 
 
-  
+
   //event listener when city is entered
   $("form").submit(function (event) {
     event.preventDefault();
     $("#cityName h2").empty();
     $("#currentForecast .card-text:first").empty();
-    newCity = $("input").val().trim();
+    for(i=0;i<5;i++){
+      $("#day" + i + " .card-text").empty();
+    };
 
     
+    newCity = $("input").val().trim();
     localStorage.setItem(localStorage.length + 1, newCity);
     $("#searchedCities").prepend("<button class='glow-on-hover historyBTN'>" + localStorage[localStorage.length] + "</button><br>");
     $("input").val("");
     variableCityCurrentCall(newCity);
-    
+    variableCity5DayCall(newCity);
+    // var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + newCity + "&units=imperial&appid=715ee435d9e6cc809bc1cb6b62581405";
+
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).then(function (response) {
+    //   for (var i = 0; i < 5; i++) {
+    //     var instance=0;
+    //     instance += i + 4;
+    //     $("#day" + i + " .card-text").append("<span>Time:</span> " + response.list[instance].dt_txt + " <img src='https://openweathermap.org/img/wn/" + response.list[instance].weather[0].icon + "@2x.png'> <br>");
+    //     $("#day" + i + " .card-text").append("<span>Temp:</span> " + response.list[instance].main.temp + "&#8457 <br>");
+    //     $("#day" + i + " .card-text").append("<span>Humidity:</span> " + response.list[instance].main.humidity + "&#37; <br>");
+    //     $("#day" + i + " .card-text").append("<span>Weather Condition:</span> " + response.list[instance].weather[0].main + " <br>");
+    //   };
+    // });
+
+
+
 
 
     //event listener to have a new api call using previously searched city
-// $(".historyBTN").click(function () {
-  
-//   $("#cityName h2").empty();
-//   $("#currentForecast .card-text:first").empty();
-//   searchedCity = $(this).html();
-//   variableCityCurrentCall(searchedCity);
-// });
+    // $(".historyBTN").click(function () {
+
+    //   $("#cityName h2").empty();
+    //   $("#currentForecast .card-text:first").empty();
+    //   searchedCity = $(this).html();
+    //   variableCityCurrentCall(searchedCity);
+    // });
     //closes form submit event listener
   });
 
 
 
 
-//event listener to close sidenav
-$(".closebtn").on("click", function () {
-  closeNav()
-  $("#searchedCities").empty();
-});
+  //event listener to close sidenav
+  $(".closebtn").on("click", function () {
+    closeNav()
+    $("#searchedCities").empty();
+  });
 
 
 

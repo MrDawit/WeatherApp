@@ -21,12 +21,10 @@ button:hover {
     box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     background-color: indigo;
   }
-
   #clearHistory{
     color:black;
     float:right;
-    margin-right:5%;
-    
+    margin-right:5%;  
     box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     background-color: rgb(68, 10, 109);
     font-size:0.75em;
@@ -35,16 +33,6 @@ button:hover {
     box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     background-color: grey;
   }
-
-/* #clearHistory{
-  position: absolute;
-font-size:12px;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-} */
-
-
  /* The side navigation menu */
  .sidenav {
     height: 100%; /* 100% Full-height */
@@ -68,12 +56,10 @@ font-size:12px;
     display: block;
     transition: 0.3s;
   }
-  
   /* When you mouse over the navigation links, change their color */
   .sidenav label:hover {
     color: #f1f1f1;
   }
-  
   /* Position and style the close button (top right corner) */
   .sidenav .closebtn {
     position: absolute;
@@ -86,10 +72,6 @@ font-size:12px;
     border-top-left-radius: 0rem ;
     border-top-right-radius: 0rem;
   }
-  /* #history{
-    color:white;
-    text-align: center;
-  } */
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
   #main {
     transition: margin-left .5s;
@@ -109,8 +91,6 @@ font-size:12px;
 #cityName{
   width:20%;
 }
-/* #cityName:h2 */
-
 #twiceBeforeFooter{
   color:greenyellow;
   font-size: .6em;
@@ -130,10 +110,6 @@ background-color:yellow;
 #red{
   background-color: red;
 }
-  .wrapper{
-    /* opacity: 0.9; */
-  }
- 
 span{
   font-weight:bold;
 }
@@ -142,7 +118,6 @@ footer{
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .glow-on-hover {
   width: 220px;
   height: 50px;
@@ -172,19 +147,15 @@ footer{
   transition: opacity .3s ease-in-out;
   border-radius: 10px;
 }
-
 .glow-on-hover:active {
   color: #000
 }
-
 .glow-on-hover:active:after {
   background: transparent;
 }
-
 .glow-on-hover:hover:before {
   opacity: 1;
 }
-
 .glow-on-hover:after {
   z-index: -1;
   content: '';
@@ -196,14 +167,11 @@ footer{
   top: 0;
   border-radius: 10px;
 }
-
 @keyframes glowing {
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
 }
-
-
 /* properties could be combined to glow-on-hover */
 .historyBTN{
   color:rgb(6, 64, 112);
@@ -215,14 +183,11 @@ footer{
   background-color: indigo;
   color:gold; 
 }
-
 .uvIndex{
   font-weight: bold;
-
 }
 #weatherPic{
   background-image: url("./assets/images/clouds.jpg");
- 
 }
 #day5{
   visibility: hidden;
@@ -244,7 +209,6 @@ footer{
    color:gold;
    background-color: indigo;
  }
- 
    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
    @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}

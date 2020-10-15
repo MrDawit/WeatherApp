@@ -122,9 +122,12 @@ $(document).ready(function () {
     });
     //closes variableCity5DayCall()
   }
+  
+  //statement for users first time visiting site and undefined citie in localstorage
+  //future development should be to try to refactor this part of the code. This section of code makes 4 ajax calls instead of 2 in some cases.
   predeterminedCurrentCall("hartford,connecticut");
   predetermined5DayCall("hartford,connecticut");
-  //statement for users first time visiting site
+  //for users who return to the site
   if (localStorage.length > 0 && cityPlacement == false) {
     predeterminedCurrentCall(localStorage[localStorage.length]);
     predetermined5DayCall(localStorage[localStorage.length]);

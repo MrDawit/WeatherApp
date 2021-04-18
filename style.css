@@ -238,12 +238,14 @@ background-color:rgb(156, 7, 156);
   margin-right:0px;
 }
 
+
+
 #texting, #image{
 color:black;
   /*text-align:center; */
   /* background-color:rgb(130, 132, 175);*/
   /* background: linear-gradient(45deg,black,indigo, #053ea8, #7a00ff);  */
-  background: linear-gradient(90deg,rgb(192, 27, 170),rgb(231, 16, 177),rgb(224, 70, 191));
+  background: linear-gradient(90deg,rgb(170, 153, 2),rgb(250, 192, 2),rgb(241, 245, 2));
   background-clip:border-box;
   font-weight: normal;
   border-right:  3px solid black;
@@ -255,6 +257,18 @@ color:black;
 }
 #image {
   border-bottom: 2px solid black;
+  font-size: small;
+}
+
+#outer_footer:hover #texting{
+  color:gold;
+  /* background:indigo; */
+  background: linear-gradient(90deg,rgb(65, 7, 107),rgb(112, 16, 180),rgb(171, 71, 243));
+}
+#outer_footer:hover #image{
+  color:gold;
+  /* background:indigo; */
+  background: linear-gradient(90deg,rgb(65, 7, 107),rgb(112, 16, 180),rgb(171, 71, 243));
 }
 
    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
